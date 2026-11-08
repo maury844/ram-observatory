@@ -18,6 +18,11 @@ export class Smoother {
     return this.values.get(key);
   }
 
+  /** Where a value is heading. Use this for anything discrete (labels, images, copy). */
+  target(key: string): number | undefined {
+    return this.targets.get(key);
+  }
+
   /** Advance by dt ms. Returns true if any value moved noticeably. */
   step(dtMs: number): boolean {
     const dt = Math.min(Math.max(dtMs, 0), 120); // background-tab jumps shouldn't overshoot

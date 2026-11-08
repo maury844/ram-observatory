@@ -88,11 +88,13 @@ export function startApp(): () => void {
 
   function renderSmoothed(): void {
     const v = (k: string) => smoother.get(k) ?? 0;
+    // Discrete outputs (mood image/label, comparison phrase) read targets, not animated values.
+    const tgt = (k: string) => smoother.target(k) ?? 0;
     hero.render(v('idleEB'), v('totalEB'), v('pct'));
-    hero.renderScale(v('idleEB'), dayPosition, Date.now());
+    hero.renderScale(tgt('idleEB'), dayPosition, Date.now());
     devices.renderValues((k) => smoother.get(k));
     regions.render(regionNames.map((name) => ({ name, pct: v(`r_${name}`) })));
-    mood.render(v('anger'), night);
+    mood.render(v('anger'), tgt('anger'), night);
   }
 
   function renderState(s: AppState, prev?: AppState): void {

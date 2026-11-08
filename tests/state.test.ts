@@ -70,3 +70,14 @@ describe('donate script', async () => {
     expect(total).toBeLessThanOrEqual(35_000);
   });
 });
+
+describe('Smoother.target', () => {
+  it('reports the destination immediately while the value is still animating', () => {
+    const s = new Smoother(600);
+    s.setTarget('x', 0);
+    s.setTarget('x', 100);
+    s.step(16);
+    expect(s.get('x')).toBeLessThan(100);
+    expect(s.target('x')).toBe(100);
+  });
+});

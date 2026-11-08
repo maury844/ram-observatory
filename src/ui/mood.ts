@@ -44,8 +44,13 @@ export function createMood() {
   else setTimeout(preload, 1500);
 
   return {
-    render(anger: number, night: boolean): void {
-      const m = pickMood(anger, night);
+    /**
+     * `anger` is the animated value (drives the bar and its number); `targetAnger` is where it
+     * is heading and alone decides the mood, so the image, label and quote switch immediately
+     * when the time changes instead of waiting for the animation to cross a band edge.
+     */
+    render(anger: number, targetAnger: number, night: boolean): void {
+      const m = pickMood(targetAnger, night);
       if (m.key !== lastKey) {
         lastKey = m.key;
         img.src = MOOD_IMAGES[m.key];
