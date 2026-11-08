@@ -103,6 +103,9 @@ export function createDonate(store: AppStore) {
     const failed = step >= FAILED;
     const done = Math.min(step - 1, DONATE_SCRIPT.length);
     const rows: { tag: string; cls: string; text: string }[] = [];
+    if (step === 0) {
+      rows.push({ tag: 'IDLE', cls: 'idle', text: 'Uplink standing by. 0 bytes donated so far.' });
+    }
     for (const s of DONATE_SCRIPT.slice(0, Math.max(0, done)))
       rows.push({ tag: ' OK ', cls: 'ok', text: s.msg });
     if (failed) rows.push({ tag: 'FAIL', cls: 'fail', text: FAIL_LINE });
@@ -121,7 +124,6 @@ export function createDonate(store: AppStore) {
         return li;
       }),
     );
-    log.hidden = rows.length === 0;
   }
 
   return {

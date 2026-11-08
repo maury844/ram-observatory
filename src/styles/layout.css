@@ -140,11 +140,14 @@
   min-height: 520px;
 }
 
-/* ---------- four-panel grid ---------- */
+/* ---------- panel grid: J2 · Q4 · R5 in thirds, D6 as a full-width row below ---------- */
 .panels {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--gap);
+}
+.panels > .donate {
+  grid-column: 1 / -1;
 }
 
 /* ---------- footer ---------- */
@@ -157,10 +160,13 @@
   color: var(--ink-3);
 }
 
-/* ---------- 2-up panels below 1360: 4-up columns get narrower than the R5 header ---------- */
-@media (max-width: 1359px) {
+/* ---------- below 1100: thirds get too narrow; J2 + Q4 side by side, R5 and D6 full rows ---------- */
+@media (max-width: 1099px) {
   .panels {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .panels > .regions-panel {
+    grid-column: 1 / -1;
   }
 }
 

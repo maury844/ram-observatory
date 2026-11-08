@@ -229,7 +229,7 @@
             </div>
           </section>
 
-          <section class="panel card" aria-labelledby="regions-h">
+          <section class="panel card regions-panel" aria-labelledby="regions-h">
             <div class="panel-head mono">
               <h2 class="panel-head__title" id="regions-h">
                 <span class="chip">R5</span>Idle share by region
@@ -245,20 +245,22 @@
                 <span class="chip">D6</span>Do your part
               </h2>
             </div>
-            <p class="donate__pitch only-wide">
-              Your machine is holding exabytes hostage. Release them.
-            </p>
-            <button type="button" class="btn primary donate__btn" data-ref="donateBtn">
-              Donate my idle RAM to the cloud
-            </button>
-            <div class="track track--thin">
-              <span class="donate__fill" data-bind="donateBar"></span>
+            <div class="donate__controls">
+              <p class="donate__pitch only-wide">
+                Your machine is holding exabytes hostage. Release them.
+              </p>
+              <button type="button" class="btn primary donate__btn" data-ref="donateBtn">
+                Donate my idle RAM to the cloud
+              </button>
+              <div class="track track--thin">
+                <span class="donate__fill" data-bind="donateBar"></span>
+              </div>
+              <div class="donate__stats mono" data-bind="donateStats"></div>
+              <div class="donate__msg mono" role="status" data-bind="donateMsg">
+                One click. Zero exabytes.
+              </div>
             </div>
-            <div class="donate__stats mono" data-bind="donateStats"></div>
-            <ol class="donate__log mono" data-bind="donateLog" aria-hidden="true" hidden></ol>
-            <div class="donate__msg mono" role="status" data-bind="donateMsg">
-              One click. Zero exabytes.
-            </div>
+            <ol class="donate__log mono" data-bind="donateLog" aria-hidden="true"></ol>
           </section>
         </div>
 
