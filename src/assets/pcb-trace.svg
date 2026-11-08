@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 480 480">
+  <!-- Seamless PCB-trace tile. Kept deliberately faint: it is texture, not content. -->
+  <g fill="none" stroke="#F5A524" stroke-opacity=".035" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- buses that cross the whole tile (seamless by construction) -->
+    <path d="M0 64H120l24 24H300l20-20H480"/>
+    <path d="M0 72H116l24 24H304l20-20H480" stroke-opacity=".025"/>
+    <path d="M0 352H60l30 30H230l18-18H480"/>
+    <path d="M200 0V40l-24 24"/>
+    <path d="M200 480V430l30-30V260l-20-20"/>
+    <path d="M408 0V150l-28 28V300l28 28V480"/>
+    <path d="M418 0V146l-28 28V304l28 28V480" stroke-opacity=".025"/>
+    <!-- local traces -->
+    <path d="M40 140H96l20 20v64l-16 16H48"/>
+    <path d="M150 160h70l22 22h56"/>
+    <path d="M150 176h64l22 22h62"/>
+    <path d="M260 250h40l20 20v50"/>
+    <path d="M300 440l40-40h40"/>
+    <path d="M30 430h70l20-20"/>
+    <path d="M330 120v-20l14-14"/>
+  </g>
+  <g fill="none" stroke="#F5A524" stroke-opacity=".045" stroke-width="1.5">
+    <!-- vias -->
+    <circle cx="48" cy="240" r="4"/>
+    <circle cx="40" cy="140" r="4"/>
+    <circle cx="298" cy="182" r="4"/>
+    <circle cx="300" cy="198" r="4"/>
+    <circle cx="320" cy="320" r="4"/>
+    <circle cx="380" cy="400" r="4"/>
+    <circle cx="30" cy="430" r="4"/>
+    <circle cx="176" cy="64" r="4"/>
+    <circle cx="344" cy="86" r="4"/>
+    <circle cx="210" cy="240" r="4"/>
+  </g>
+  <g fill="#F5A524" fill-opacity=".028">
+    <!-- an IC footprint: pads -->
+    <rect x="236" y="300" width="6" height="12" rx="1"/><rect x="248" y="300" width="6" height="12" rx="1"/>
+    <rect x="260" y="300" width="6" height="12" rx="1"/><rect x="272" y="300" width="6" height="12" rx="1"/>
+    <rect x="236" y="336" width="6" height="12" rx="1"/><rect x="248" y="336" width="6" height="12" rx="1"/>
+    <rect x="260" y="336" width="6" height="12" rx="1"/><rect x="272" y="336" width="6" height="12" rx="1"/>
+    <rect x="96" y="272" width="14" height="8" rx="1"/><rect x="96" y="286" width="14" height="8" rx="1"/>
+  </g>
+</svg>

@@ -1,0 +1,230 @@
+/* ---------- board & shells ---------- */
+.board {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  padding: 16px 0 40px;
+  background-color: var(--board);
+  background-image: url('../assets/pcb-trace.svg');
+  background-size: 480px 480px;
+  background-repeat: repeat;
+}
+
+.shell {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.shell--body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+/* ---------- masthead ---------- */
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.masthead__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.masthead__logo {
+  flex: 0 0 auto;
+}
+.masthead__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+.masthead__title {
+  font-size: 18px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.masthead__eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.masthead__tag {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border-left: 1px solid var(--line);
+  padding-left: 12px;
+  white-space: nowrap;
+}
+.masthead__status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+  font-size: 12px;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.masthead__sf {
+  color: var(--ink-3);
+}
+
+/* ---------- hero band ---------- */
+.hero.panel {
+  position: relative;
+  overflow: hidden;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  background-color: var(--band);
+  background-image: url('../assets/pcb-trace.svg');
+  background-size: 480px 480px;
+}
+.hero__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  min-height: 560px;
+}
+.hero__copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: 40px 32px 40px var(--gutter);
+  min-width: 0;
+}
+.hero__figure {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.hero__num {
+  font-size: clamp(84px, 9.45vw, 136px);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  color: var(--amber);
+  font-variant-numeric: tabular-nums;
+}
+.hero__unit {
+  font-size: clamp(22px, 2.4vw, 34px);
+  color: var(--ink-2);
+}
+.hero__lede {
+  color: var(--ink-2);
+  font-size: 16px;
+  max-width: 46ch;
+}
+.hero__stage {
+  position: relative;
+  min-width: 0;
+  min-height: 520px;
+}
+
+/* ---------- four-panel grid ---------- */
+.panels {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap);
+}
+
+/* ---------- footer ---------- */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 20px;
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+/* ---------- tablet: 2-up panels ---------- */
+@media (max-width: 1199px) {
+  .panels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- below 900: hero stacks (number over globe) ---------- */
+@media (max-width: 899px) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+  .hero__copy {
+    padding: 32px var(--gutter) 0;
+  }
+  .hero__stage {
+    min-height: 0;
+  }
+}
+
+/* ---------- phone (design: C-Mobile, 390 wide) ---------- */
+@media (max-width: 699px) {
+  .board {
+    padding: 14px 0 32px;
+  }
+  .shell:first-child {
+    padding: 0;
+  }
+  .masthead {
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 0 var(--gutter) 12px;
+  }
+  .masthead__brand {
+    gap: 10px;
+  }
+  .masthead__title {
+    font-size: 16px;
+    letter-spacing: 0;
+  }
+  .masthead__status {
+    font-size: 10px;
+    flex: 0 0 auto;
+  }
+  .hero.panel {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero::before,
+  .hero::after {
+    display: none;
+  }
+  .hero__copy {
+    padding: 22px var(--gutter) 0;
+    gap: 10px;
+  }
+  .hero__figure {
+    gap: 8px;
+  }
+  .hero__lede {
+    font-size: 13px;
+  }
+  .panels {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .footer {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+}

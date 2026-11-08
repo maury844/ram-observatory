@@ -1,0 +1,46 @@
+:root {
+  /* surfaces */
+  --board: #0b0a08;
+  --band: #0e0c09;
+  --panel: #13110c;
+  --raised: #1a1710;
+  --track: #1e1a12;
+  /* lines */
+  --line: #2a2419;
+  --line-2: #3a3122;
+  --chip-line: #5a4620;
+  --bracket: #9a7a3a;
+  /* ink */
+  --ink: #ede8dc;
+  --ink-2: #a79f8e;
+  --ink-3: #8b8370;
+  /* accents */
+  --amber: #f5a524;
+  --amber-hi: #ffb640;
+  --amber-link-hover: #ffc45c;
+  --amber-deep: #b8761a;
+  --ochre: #d9a24a;
+  --hot: #ff4d4d;
+  --hot-2: #ff6a5a;
+  --on-amber: #1a1200;
+  /* idle ramp — keep in sync with src/model/color.ts */
+  --ramp: linear-gradient(90deg, #6a4b1c, #f5a524, #ff7a1a, #ff4d4d);
+
+  --sans:
+    'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  --mono:
+    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+
+  --gutter: 24px;
+  --gap: 20px;
+  --hit: 44px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (max-width: 699px) {
+  :root {
+    --gutter: 14px;
+    --gap: 14px;
+  }
+}

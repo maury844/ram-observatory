@@ -1,0 +1,68 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--board);
+}
+
+body {
+  margin: 0;
+  background: var(--board);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--amber);
+  text-underline-offset: 2px;
+}
+a:hover {
+  color: var(--amber-link-hover);
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+.mono {
+  font-family: var(--mono);
+}
+
+.strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+/* Responsive copy swaps (design has different strings at phone width). */
+@media (max-width: 699px) {
+  .only-wide {
+    display: none !important;
+  }
+}
+@media (min-width: 700px) {
+  .only-compact {
+    display: none !important;
+  }
+}
+
+.noscript {
+  color: var(--ink-2);
+  font-family: var(--mono);
+  padding: 24px;
+}

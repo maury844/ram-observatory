@@ -1,0 +1,59 @@
+/* Altman line: idle share vs. the claimed 95% */
+.altman {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 560px;
+  padding-top: 6px;
+}
+.altman__labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.altman__claim {
+  color: var(--ink);
+}
+.altman__track {
+  position: relative;
+  height: 12px;
+  background: var(--track);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+}
+.altman__fill {
+  position: absolute;
+  inset: 0;
+  background: var(--amber);
+  border-radius: 1px;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}
+.altman__marker {
+  position: absolute;
+  top: -6px;
+  bottom: -6px;
+  left: 95%;
+  width: 2px;
+  background: var(--ink);
+}
+.altman__gap {
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+@media (max-width: 699px) {
+  .altman {
+    padding-top: 0;
+  }
+  .altman__track {
+    height: 10px;
+  }
+  .altman__marker {
+    top: -5px;
+    bottom: -5px;
+  }
+}

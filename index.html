@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0B0A08" />
+    <title>Global Idle RAM Observatory</title>
+    <meta
+      name="description"
+      content="Satire. A live Fermi estimate of how much consumer RAM on Earth is doing nothing right now, on a globe with the real day/night terminator."
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  </head>
+  <body>
+    <div class="board">
+      <div class="shell">
+        <header class="masthead">
+          <div class="masthead__brand">
+            <svg
+              class="masthead__logo"
+              aria-hidden="true"
+              width="30"
+              height="30"
+              viewBox="0 0 34 34"
+              fill="none"
+              stroke="#F5A524"
+              stroke-width="1.5"
+            >
+              <rect x="7" y="7" width="20" height="20" rx="2" />
+              <rect
+                x="12"
+                y="12"
+                width="10"
+                height="10"
+                rx="1"
+                fill="#F5A524"
+                stroke="none"
+                opacity=".9"
+              />
+              <path
+                d="M12 2v5M17 2v5M22 2v5M12 27v5M17 27v5M22 27v5M2 12h5M2 17h5M2 22h5M27 12h5M27 17h5M27 22h5"
+              />
+            </svg>
+            <div class="masthead__titles">
+              <span class="masthead__eyebrow mono only-compact">Broadcast · Satire</span>
+              <h1 class="masthead__title">Global Idle RAM Observatory</h1>
+            </div>
+            <span class="masthead__tag mono only-wide">Broadcast · Satire · Live</span>
+          </div>
+          <div class="masthead__status mono">
+            <span class="masthead__clock only-wide" data-bind="utcClock">—</span>
+            <span class="masthead__sf only-wide" data-bind="sfClock">—</span>
+            <span class="live-pill"
+              ><span class="livedot" data-bind="liveDot"></span
+              ><span data-bind="liveLabel">LIVE</span></span
+            >
+          </div>
+        </header>
+      </div>
+
+      <section class="hero panel" aria-labelledby="hero-label" data-ref="heroClip">
+        <div class="hero__inner">
+          <div class="hero__copy">
+            <div class="panel-head mono">
+              <span class="panel-head__title" id="hero-label"
+                ><span class="chip">U1</span>Idle consumer DRAM ·
+                <span class="only-wide">right now</span><span class="only-compact">now</span></span
+              >
+            </div>
+            <div class="hero__figure">
+              <span class="hero__num mono" data-bind="heroEB">—</span>
+              <span class="hero__unit mono">EB</span>
+            </div>
+            <p class="hero__lede">
+              <span class="mono strong" data-bind="heroPct">—</span
+              ><span class="mono strong">%</span> of
+              <span class="mono strong"><span data-bind="heroTotal">—</span> EB</span>
+              <span class="only-wide"
+                >of installed consumer memory is doing nothing at this moment. One AI CEO called
+                this “quite terrible.” The sun moves. People sleep. The number barely changes.</span
+              >
+              <span class="only-compact">installed is doing nothing right now.</span>
+            </p>
+            <div class="altman">
+              <div class="altman__labels mono">
+                <span>0%</span><span class="altman__claim">Altman line · 95%</span>
+              </div>
+              <div
+                class="altman__track"
+                role="meter"
+                aria-label="Share of installed consumer RAM that is idle"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                data-ref="heroMeter"
+              >
+                <div class="altman__fill" data-bind="heroBar"></div>
+                <div class="altman__marker" aria-hidden="true"></div>
+              </div>
+              <div class="altman__gap mono" data-bind="samGap">—</div>
+            </div>
+          </div>
+          <div class="hero__stage">
+            <div class="globe" data-ref="globeStage">
+              <canvas
+                class="globe__canvas"
+                data-ref="globeCanvas"
+                tabindex="0"
+                role="img"
+                aria-label="Globe with one dot per country, sized by installed RAM and coloured by idle share; the night side is shaded. Drag or use arrow keys to rotate; hover or tap a dot for details."
+              ></canvas>
+              <div data-ref="globeTip"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="shell shell--body">
+        <div class="panel scrubber">
+          <div class="scrubber__row">
+            <div class="panel-head mono only-wide">
+              <span class="panel-head__title"><span class="chip">U3</span>Time</span>
+            </div>
+            <label for="scrub" class="scrubber__label mono" data-bind="scrubLabel">NOW</label>
+            <input
+              id="scrub"
+              class="scrubber__range"
+              type="range"
+              min="-720"
+              max="720"
+              step="5"
+              value="0"
+              aria-label="Time offset, plus or minus twelve hours"
+              data-ref="scrub"
+            />
+          </div>
+          <div class="scrubber__buttons">
+            <button type="button" class="btn" data-ref="liveBtn" disabled>
+              <span class="livedot"></span>live
+            </button>
+            <button type="button" class="btn" data-ref="spinBtn" aria-label="Pause globe rotation">
+              <svg
+                class="icon-pause"
+                aria-hidden="true"
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="#EDE8DC"
+              >
+                <rect x="1" y="1" width="3.5" height="10" />
+                <rect x="7.5" y="1" width="3.5" height="10" />
+              </svg>
+              <svg
+                class="icon-play"
+                aria-hidden="true"
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="#EDE8DC"
+              >
+                <path d="M2 1l9 5-9 5z" />
+              </svg>
+              <span data-bind="spinLabel">PAUSE</span>
+            </button>
+          </div>
+          <div class="legend mono" aria-label="Globe legend">
+            <span class="legend__item"><span class="legend__night"></span>night</span>
+            <span class="legend__item">idle share <span class="legend__ramp"></span></span>
+            <span>dot size = installed RAM</span>
+          </div>
+        </div>
+
+        <div class="panels">
+          <section class="panel card" aria-labelledby="devices-h">
+            <div class="panel-head mono">
+              <h2 class="panel-head__title" id="devices-h">
+                <span class="chip">J2</span>Devices counted
+              </h2>
+              <span
+                ><span class="only-wide">toggle</span><span class="only-compact">tap</span></span
+              >
+            </div>
+            <div class="devices" data-ref="devices"></div>
+            <p class="card__note mono only-wide">
+              Idle = not actively serving a human at this moment.
+            </p>
+          </section>
+
+          <section class="panel card cro" aria-labelledby="cro-h">
+            <div class="panel-head mono">
+              <h2 class="panel-head__title" id="cro-h">
+                <span class="chip">Q4</span>Chief RAM Officer
+              </h2>
+              <span>mood</span>
+            </div>
+            <div class="cro__body">
+              <div class="cro__window">
+                <img
+                  class="bust wobble"
+                  data-ref="bust"
+                  alt=""
+                  width="184"
+                  height="531"
+                  decoding="async"
+                />
+                <div class="cro__fade" aria-hidden="true"></div>
+              </div>
+              <div class="cro__text" aria-live="polite">
+                <div class="cro__label mono" data-bind="moodLabel">—</div>
+                <p class="cro__quote">“<span data-bind="moodQuote">—</span>”</p>
+              </div>
+            </div>
+            <div class="anger">
+              <div class="anger__labels mono">
+                <span
+                  ><span class="only-wide">Terribleness index</span
+                  ><span class="only-compact">Terribleness</span></span
+                ><span class="anger__val" data-bind="angerPct">—</span>
+              </div>
+              <div class="track"><div class="anger__fill" data-bind="angerBar"></div></div>
+              <div class="anger__ticks mono">
+                <span data-bind="tickLo">least idle hour</span
+                ><span data-bind="tickHi">most idle hour</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel card" aria-labelledby="regions-h">
+            <div class="panel-head mono">
+              <h2 class="panel-head__title" id="regions-h">
+                <span class="chip">R5</span>Idle share by region
+              </h2>
+              <span>70–100%</span>
+            </div>
+            <div class="regions" data-ref="regions"></div>
+          </section>
+
+          <section class="panel card donate" aria-labelledby="donate-h">
+            <div class="panel-head mono">
+              <h2 class="panel-head__title" id="donate-h">
+                <span class="chip">D6</span>Do your part
+              </h2>
+            </div>
+            <p class="donate__pitch only-wide">
+              Your machine is holding exabytes hostage. Release them.
+            </p>
+            <button type="button" class="btn primary donate__btn" data-ref="donateBtn">
+              Donate my idle RAM to the cloud
+            </button>
+            <div class="track track--thin">
+              <span class="donate__fill" data-bind="donateBar"></span>
+            </div>
+            <div class="donate__msg mono" role="status" data-bind="donateMsg">
+              One click. Zero exabytes.
+            </div>
+          </section>
+        </div>
+
+        <div class="panel methodology">
+          <details>
+            <summary class="mono">
+              <span class="panel-head__title"
+                ><span class="chip">M7</span>Methodology · Fermi estimate over ~80 countries · real
+                solar terminator · sources</span
+              >
+              <span class="methodology__toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="methodology__body">
+              <p>
+                Satire built on a Fermi estimate, not a measurement. Model:
+                <span class="mono">idle = 1 − occupancy(local hour) × capacity-in-use</span>, summed
+                over ~80 countries weighted by population × device penetration × RAM per device.
+                Local time uses each country's standard UTC offset (no DST). Night shading is the
+                real solar terminator for the displayed time. PCs: 1.5 B × 10.5 GB. Smartphones: 6.5
+                B × 5.5 GB. Consoles: 300 M × 12 GB.
+              </p>
+              <div class="table-scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">Input</th>
+                      <th scope="col">Value used</th>
+                      <th scope="col">Basis</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>PC installed base</td>
+                      <td class="mono">1.5 B</td>
+                      <td>
+                        ~280 M shipped/yr (IDC/Omdia 2025) × ~5.5-yr life; ~40% of base still on
+                        Win10 or older (Counterpoint)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>RAM per PC (installed base)</td>
+                      <td class="mono">10.5 GB</td>
+                      <td>
+                        TrendForce avg notebook RAM shipped: 10.5 GB (2023) → 12.6 GB (2025); base
+                        is older, desktops pull up
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PC active use</td>
+                      <td class="mono">≈6.7 h/day</td>
+                      <td>
+                        Hourly occupancy curve peaking ~47% at 10:00 and 15:00 local; ~2% at 03:00
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PC RAM in use when active</td>
+                      <td class="mono">55%</td>
+                      <td>Guess: browser + chat + music on a 16 GB machine</td>
+                    </tr>
+                    <tr>
+                      <td>Smartphones</td>
+                      <td class="mono">6.5 B × 5.5 GB</td>
+                      <td>
+                        Avg shipped DRAM 8.4 GB Dec 2025 (Counterpoint); installed base older. ~4.8
+                        h/day screen time; 60% of RAM “working” when active (the rest is cached apps
+                        you're not looking at)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Consoles</td>
+                      <td class="mono">300 M × 12 GB</td>
+                      <td>
+                        Guess from active-user disclosures; evening-heavy curve, ~2.2 h/day; 90% of
+                        RAM used while gaming
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Penetration tiers</td>
+                      <td class="mono">hand-coded</td>
+                      <td>
+                        PCs per capita ~0.75 in NA/W-EU/JP/KR, ~0.3 CN/LatAm, ~0.08 IN, ~0.05 SSA;
+                        totals rescaled to the installed bases above
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                <strong>What “idle” means here.</strong> Powered-off, asleep, or sitting in a pocket
+                counts as idle. Cached apps in a phone's RAM count as idle too, because nobody is
+                using them — which is exactly the kind of accounting that makes 95% sound like a
+                scandal. Data-center DRAM isn't 100% busy either; this page doesn't model that, but
+                you're welcome to feel it.
+              </p>
+              <p>
+                <strong>Sources.</strong>
+                <a
+                  href="https://www.theverge.com/ai-artificial-intelligence/1023820/sam-altman-ram-shortage-cloud-servers"
+                  rel="noopener"
+                  >The Verge on the remarks</a
+                >
+                ·
+                <a
+                  href="https://www.tweaktown.com/news/114419/sam-altman-says-your-pcs-ram-is-a-quite-terrible-use-of-the-worlds-limited-dram-supply/index.html"
+                  rel="noopener"
+                  >TweakTown on the remarks</a
+                >
+                ·
+                <a
+                  href="https://counterpointresearch.com/de/insights/Global-Smartphone-Average-DRAM-Hits-Record-8.4GB-in-2025"
+                  rel="noopener"
+                  >Counterpoint: smartphone DRAM</a
+                >
+                ·
+                <a href="https://techpowerup.com/forums/threads/323872" rel="noopener"
+                  >TrendForce via TechPowerUp</a
+                >
+                ·
+                <a
+                  href="https://www.tomshardware.com/desktops/gaming-pcs/idc-slashes-2026-pc-shipment-forecast-amid-memory-shortages-total-pc-market-value-to-nonetheless-increase-to-usd274-billion-due-to-ongoing-price-hikes"
+                  rel="noopener"
+                  >Tom's Hardware: IDC PC forecast</a
+                >
+                ·
+                <a
+                  href="https://counterpointresearch.com/cn/insights/global-pc-shipments-q1-2026"
+                  rel="noopener"
+                  >Counterpoint: Q1 2026 PC shipments</a
+                >
+                · Coastlines: Natural Earth via world-atlas.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <footer class="footer mono">
+          <span>Not affiliated with anyone. Your RAM is fine. It is allowed to rest.</span>
+          <span class="only-wide">PCB-2026-11 · rev C</span>
+        </footer>
+      </div>
+    </div>
+    <noscript
+      ><p class="noscript">
+        This live dashboard needs JavaScript. Your RAM, meanwhile, is resting.
+      </p></noscript
+    >
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

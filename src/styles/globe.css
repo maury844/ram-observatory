@@ -1,0 +1,113 @@
+/* Desktop: globe sits in the right half and bleeds off the band's right edge. */
+.globe {
+  position: absolute;
+  top: 50%;
+  right: -9%;
+  width: 600px;
+  max-width: 110%;
+  aspect-ratio: 1 / 1;
+  transform: translateY(-50%);
+}
+.globe__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  /* Vertical swipes keep scrolling the page on touch; horizontal drags spin the globe. */
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 50%;
+}
+.globe__canvas:active {
+  cursor: grabbing;
+}
+.globe__canvas:focus-visible {
+  outline-offset: -6px;
+}
+
+/* Tablet: globe below the number, bleeding right. */
+@media (max-width: 899px) {
+  .globe {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    width: min(640px, 92%);
+    max-width: none;
+    margin: 8px -8% 0 auto;
+  }
+}
+
+/* Phone (design C-Mobile): 112% wide, 4% in from the left. */
+@media (max-width: 699px) {
+  .globe {
+    width: 112%;
+    margin: 6px 0 0 4%;
+  }
+}
+
+/* ---------- tooltip ---------- */
+.globe-tip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  min-width: 200px;
+  background: rgba(11, 10, 8, 0.94);
+  border: 1px solid var(--line-2);
+  border-radius: 3px;
+  padding: 10px 12px;
+  font-size: 11px;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.globe-tip[hidden] {
+  display: none;
+}
+.globe-tip__name {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.globe-tip__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.globe-tip__row[hidden] {
+  display: none;
+}
+.globe-tip__row--dev {
+  font-size: 10px;
+}
+.globe-tip__k {
+  color: var(--ink-3);
+}
+.globe-tip__v--hot {
+  font-weight: 600;
+}
+
+/* Phone: docked bottom-left of the globe instead of chasing the dot. */
+.globe-tip.is-docked {
+  left: 4%;
+  top: auto;
+  bottom: 8%;
+  min-width: 160px;
+  padding: 8px 10px;
+  font-size: 10px;
+  gap: 1px;
+}
+.globe-tip.is-docked .globe-tip__name {
+  font-size: 12px;
+  margin-bottom: 0;
+}
+.globe-tip.is-docked .globe-tip__row {
+  gap: 12px;
+}
