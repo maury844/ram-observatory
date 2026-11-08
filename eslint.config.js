@@ -17,6 +17,11 @@ export default tseslint.config(
     },
   },
   {
+    // Tests index into fixed fixtures; `!` there is clearer than defensive branches.
+    files: ['tests/**/*.ts'],
+    rules: { '@typescript-eslint/no-non-null-assertion': 'off' },
+  },
+  {
     files: ['scripts/**/*.mjs', '*.config.{js,ts}'],
     languageOptions: { globals: { ...globals.node } },
     rules: { 'no-console': 'off' },

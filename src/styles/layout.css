@@ -157,8 +157,8 @@
   color: var(--ink-3);
 }
 
-/* ---------- tablet: 2-up panels ---------- */
-@media (max-width: 1199px) {
+/* ---------- 2-up panels below 1360: 4-up columns get narrower than the R5 header ---------- */
+@media (max-width: 1359px) {
   .panels {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

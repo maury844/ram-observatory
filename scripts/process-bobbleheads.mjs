@@ -47,6 +47,8 @@ for (const mood of MOODS) {
     .resize({ height: targetHeight, withoutEnlargement: true })
     .webp({ quality: 82, alphaQuality: 90, effort: 6 })
     .toFile(out);
-  console.log(`${mood.padEnd(10)} ${info.width}x${info.height}  ${(info.size / 1024).toFixed(1)} KB  <- ${input}`);
+  console.log(
+    `${mood.padEnd(10)} ${info.width}x${info.height}  ${(info.size / 1024).toFixed(1)} KB  <- ${input}`,
+  );
 }
 process.exit(failed ? 1 : 0);

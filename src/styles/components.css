@@ -41,6 +41,10 @@
   text-transform: uppercase;
   color: var(--ink-3);
 }
+.panel-head > :not(.panel-head__title) {
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
 .panel-head__title {
   display: inline-flex;
   align-items: center;

@@ -16,7 +16,7 @@ export interface DeviceSpec {
   /** PCs are the whole point: always counted, toggle is locked on. */
   readonly locked: boolean;
   readonly defaultOn: boolean;
-  /** Short label shown under the device name. */
+  /** Short label shown under the device name (NBSPs keep "10.5 GB" etc. from splitting). */
   readonly meta: string;
   /** P(device actively serving a human) for each local hour 00..23. */
   readonly occ: readonly number[];
@@ -32,7 +32,7 @@ export const DEVICES: Readonly<Record<DeviceKey, DeviceSpec>> = {
     cap: 0.55,
     locked: true,
     defaultOn: true,
-    meta: '1.5 B units · 10.5 GB · ~6.7 h/day',
+    meta: '1.5\u00a0B\u00a0units · 10.5\u00a0GB · ~6.7\u00a0h/day',
     // prettier-ignore
     occ: [.03,.02,.02,.02,.02,.04,.10,.22,.38,.45,.47,.46,.40,.45,.47,.46,.42,.36,.32,.34,.36,.30,.18,.08],
   },
@@ -44,7 +44,7 @@ export const DEVICES: Readonly<Record<DeviceKey, DeviceSpec>> = {
     cap: 0.6,
     locked: false,
     defaultOn: false,
-    meta: '6.5 B units · 5.5 GB · ~4.8 h/day',
+    meta: '6.5\u00a0B\u00a0units · 5.5\u00a0GB · ~4.8\u00a0h/day',
     // prettier-ignore
     occ: [.04,.02,.02,.02,.02,.05,.12,.22,.25,.22,.22,.24,.28,.24,.22,.22,.24,.28,.32,.36,.40,.38,.28,.12],
   },
@@ -56,7 +56,7 @@ export const DEVICES: Readonly<Record<DeviceKey, DeviceSpec>> = {
     cap: 0.9,
     locked: false,
     defaultOn: false,
-    meta: '300 M units · 12 GB · ~2.2 h/day',
+    meta: '300\u00a0M\u00a0units · 12\u00a0GB · ~2.2\u00a0h/day',
     // prettier-ignore
     occ: [.03,.02,.01,.01,.01,.01,.02,.03,.04,.05,.06,.07,.08,.08,.09,.11,.14,.17,.20,.24,.26,.22,.14,.07],
   },
