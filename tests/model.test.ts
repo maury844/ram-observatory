@@ -240,3 +240,37 @@ describe('formatting & colour', () => {
     expect(idleColor(2)).toBe('rgb(255, 77, 77)');
   });
 });
+
+describe('hero scale phrases', async () => {
+  const { SCALE_PHRASES, scaleTier, scalePhrase, bigWords, times } =
+    await import('../src/model/scale');
+  it('formats big numbers with two significant digits', () => {
+    expect(bigWords(9.65e12)).toBe('9.7 trillion');
+    expect(bigWords(1.4e11)).toBe('140 billion');
+    expect(bigWords(3600)).toBe('3,600');
+    expect(times(83.4)).toBe('83');
+    expect(times(1.86)).toBe('1.9');
+  });
+  it('maps day position to tiers', () => {
+    expect(scaleTier(0)).toBe('low');
+    expect(scaleTier(0.5)).toBe('mid');
+    expect(scaleTier(1)).toBe('high');
+  });
+  it('every phrase renders sane text across the whole possible range (10–60 EB)', () => {
+    for (const list of Object.values(SCALE_PHRASES)) {
+      expect(list).toHaveLength(3);
+      for (const p of list) {
+        for (const eb of [10, 14, 46, 60]) {
+          const s = p(eb * 1e18);
+          expect(s).not.toMatch(/NaN|Infinity|undefined/);
+          expect(s.length).toBeGreaterThan(20);
+        }
+      }
+    }
+  });
+  it('rotates within a tier and is stable inside a rotation window', () => {
+    const a = scalePhrase(14e18, 0, 0);
+    expect(scalePhrase(14e18, 0, 19_999)).toBe(a);
+    expect(scalePhrase(14e18, 0, 20_000)).not.toBe(a);
+  });
+});

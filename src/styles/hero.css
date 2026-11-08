@@ -57,3 +57,29 @@
     bottom: -5px;
   }
 }
+
+/* "How much is that?" comparison under the hero number. */
+.hero__scale {
+  margin: -6px 0 0;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  max-width: 52ch;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink);
+  min-height: 2.9em; /* two lines reserved so rotating phrases don't shift the layout */
+}
+.hero__scale-mark {
+  color: var(--amber);
+  font-size: 18px;
+  font-weight: 600;
+  flex: 0 0 auto;
+}
+@media (max-width: 699px) {
+  .hero__scale {
+    margin-top: -2px;
+    font-size: 13px;
+    min-height: 4.35em; /* three short lines on phones */
+  }
+}

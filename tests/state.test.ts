@@ -56,3 +56,17 @@ describe('smoother', () => {
     expect(sm.get('x')!).toBeLessThan(1);
   });
 });
+
+describe('donate script', async () => {
+  const { DONATE_SCRIPT } = await import('../src/ui/donate');
+  it('only ever moves forward and stops short of 100%', () => {
+    const pcts = DONATE_SCRIPT.map((s) => s.pct);
+    pcts.forEach((p, i) => expect(p).toBeGreaterThan(i === 0 ? 0 : (pcts[i - 1] ?? 0)));
+    expect(pcts.at(-1)).toBeLessThan(100);
+  });
+  it('takes long enough to feel real but not forever (20–35 s)', () => {
+    const total = DONATE_SCRIPT.reduce((s, x) => s + x.ms, 0);
+    expect(total).toBeGreaterThanOrEqual(20_000);
+    expect(total).toBeLessThanOrEqual(35_000);
+  });
+});

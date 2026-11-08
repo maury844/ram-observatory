@@ -51,6 +51,7 @@ export function startApp(): () => void {
   });
 
   let night = false;
+  let dayPosition = 0;
   let regionNames: string[] = [];
 
   function setTargets(result: ComputeResult, anger: number): void {
@@ -77,6 +78,7 @@ export function startApp(): () => void {
     const result = compute(model, d, s.enabled);
     const env = getEnvelope(s.enabled, d);
     night = isSFNight(d);
+    dayPosition = angerFraction(result.idleFraction, env, false);
     setTargets(result, angerFraction(result.idleFraction, env, night));
     if (s.reducedMotion) smoother.snap();
     globe.setData({ result, date: d, enabled: s.enabled });
@@ -87,6 +89,7 @@ export function startApp(): () => void {
   function renderSmoothed(): void {
     const v = (k: string) => smoother.get(k) ?? 0;
     hero.render(v('idleEB'), v('totalEB'), v('pct'));
+    hero.renderScale(v('idleEB'), dayPosition, Date.now());
     devices.renderValues((k) => smoother.get(k));
     regions.render(regionNames.map((name) => ({ name, pct: v(`r_${name}`) })));
     mood.render(v('anger'), night);

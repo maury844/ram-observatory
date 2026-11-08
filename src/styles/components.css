@@ -479,6 +479,72 @@
   color: var(--ink-2);
   min-height: 3em;
 }
+.donate__stats {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -6px;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  min-height: 1.4em;
+}
+.donate__log {
+  list-style: none;
+  margin: 0;
+  padding: 8px 10px;
+  background: var(--board, #0b0a08);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: var(--ink-3);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  /* Fixed height so the panel doesn't grow while lines stream in. */
+  height: calc(6 * 1.55em + 16px + 5px);
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.donate__log[hidden] {
+  display: none;
+}
+.donate__line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.donate__tag {
+  white-space: pre;
+}
+.donate__line--ok .donate__tag {
+  color: var(--amber-deep);
+}
+.donate__line--run {
+  color: var(--ink);
+}
+.donate__line--run .donate__tag {
+  color: var(--amber);
+  animation: donate-blink 0.8s steps(2, start) infinite;
+}
+.donate__line--fail {
+  color: var(--hot-2);
+}
+.donate__line--fail .donate__tag {
+  color: var(--hot);
+  font-weight: 700;
+}
+@keyframes donate-blink {
+  to {
+    opacity: 0.25;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .donate__line--run .donate__tag {
+    animation: none;
+  }
+}
 
 /* ---------- methodology (M7) ---------- */
 .methodology {
@@ -628,6 +694,13 @@
   .donate__msg {
     font-size: 11px;
     min-height: 1.5em;
+  }
+  .donate__log {
+    font-size: 10px;
+    height: calc(4 * 1.55em + 16px + 3px);
+  }
+  .donate__line:nth-last-child(n + 5) {
+    display: none;
   }
   .methodology {
     padding: 2px 14px;

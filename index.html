@@ -72,6 +72,10 @@
               <span class="hero__num mono" data-bind="heroEB">—</span>
               <span class="hero__unit mono">EB</span>
             </div>
+            <p class="hero__scale" aria-live="off">
+              <span class="hero__scale-mark mono" aria-hidden="true">≈</span>
+              <span data-bind="heroScale">—</span>
+            </p>
             <p class="hero__lede">
               <span class="mono strong" data-bind="heroPct">—</span
               ><span class="mono strong">%</span> of
@@ -250,6 +254,8 @@
             <div class="track track--thin">
               <span class="donate__fill" data-bind="donateBar"></span>
             </div>
+            <div class="donate__stats mono" data-bind="donateStats"></div>
+            <ol class="donate__log mono" data-bind="donateLog" aria-hidden="true" hidden></ol>
             <div class="donate__msg mono" role="status" data-bind="donateMsg">
               One click. Zero exabytes.
             </div>
